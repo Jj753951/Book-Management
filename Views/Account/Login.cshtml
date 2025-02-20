@@ -1,0 +1,13 @@
+﻿@model LoginViewModel
+
+<form asp-action="Login" method="post">
+    <div>
+        <label for="username">Потребителско име</label>
+        <input type="text" id="username" name="Username" value="@Model.Username" />
+    </div>
+    <div>
+        <input type="checkbox" id="rememberMe" name="RememberMe" />
+        <label for="rememberMe">Запомни ме</label>
+    </div>
+    <button type="submit">Вход</button>
+</form>

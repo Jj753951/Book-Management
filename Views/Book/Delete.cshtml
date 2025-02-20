@@ -1,0 +1,18 @@
+﻿@model Book_Management.Models.BookModel
+
+<h2>Delete</h2>
+<p>are u sure</p>
+
+<div>
+    <h4>@Model.Title</h4>
+    <p>
+        <strong>Author:</strong> @Model.Author</br>
+        <strong>Year:</strong> @Model.Year
+    </p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for-id="Id" />
+    <button type ="submit" class="btn btn-danger">Delete</button>
+    <button asp-action="Index" class="btn btn-secondary">Cancel</button>
+</form>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<BookModel>
+@{
+    ViewData["Title"] = "Списък с книги";
+}
+
+<h2>Списък с книги</h2>
+
+<!-- Състояние на сесията -->
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-info">
+        @ViewBag.Message
+    </div>
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>Заглавие</th>
+            <th>Автор</th>
+            <th>Година</th>
+            <th>Жанр</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.Year</td>
+                <td>@book.Genre</td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@book.Id">Изтри</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Линкове за сесиите -->
+<p>
+    <a href="@Url.Action("SetSession", "Session")">Създай сесия</a> |
+    <a href="@Url.Action("GetSession", "Session")">Получаване на сесия</a> |
+    <a href="@Url.Action("ClearSession", "Session")">Изтриване на сесия</a>
+
+    <form action="@Url.Action("CheckSessionStatus", "Session")" method="get">
+        <button type="submit" class="btn btn-warning">Провери статуса на сесията</button>
+    </form>
+
+
+</p>
